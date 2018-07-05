@@ -18,8 +18,8 @@ RUN apt-get update \
 ENV DOCKER_HOST=tcp://docker:2375
 RUN curl -fsSL https://get.docker.com | sh
 
-# install awscli
-RUN pip --no-cache-dir install awscli s3cmd pipenv
+# install docker-compose and awscli
+RUN pip --no-cache-dir install docker-compose awscli s3cmd pipenv
 
 # install kops
 ARG KOPS_VERSION=1.9.1

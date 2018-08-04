@@ -27,7 +27,7 @@ RUN curl -L https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}
   > /usr/local/bin/kops && chmod +x /usr/local/bin/kops
 
 # install kubectl
-ARG KUBECTL_VERSION=1.10.2
+ARG KUBECTL_VERSION=1.11.1
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
   > /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
 

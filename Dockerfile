@@ -15,7 +15,6 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # install Docker
-ENV DOCKER_HOST=tcp://docker:2375
 RUN curl -fsSL https://get.docker.com | sh
 
 # install docker-compose and awscli

@@ -33,8 +33,7 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL
 # install helm
 ARG HELM_VERSION=2.8.2
 RUN curl -L https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
-  | tar -zx linux-amd64/helm \
-  && mv linux-amd64/helm /usr/local/bin/helm
+  | tar -zx -C /usr/local/bin --strip-components=1 linux-amd64/helm
 
 # install Pulumi
 RUN curl -fsSL https://get.pulumi.com | sh

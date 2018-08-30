@@ -40,7 +40,7 @@ RUN curl -fsSL https://get.pulumi.com | sh
 ENV PATH=$PATH:/root/.pulumi/bin
 
 # install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash \
   && apt-get install -yq nodejs build-essential \
   && npm i -g npm
 

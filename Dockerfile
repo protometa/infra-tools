@@ -26,7 +26,7 @@ RUN pip --no-cache-dir install docker-compose awscli s3cmd pipenv \
   && echo "complete -C '/usr/local/bin/aws_completer' aws" >> ~/.bashrc
 
 # install kops
-ARG KOPS_VERSION=1.9.1
+ARG KOPS_VERSION=1.9.2
 RUN curl -L https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-linux-amd64 \
   > /usr/local/bin/kops && chmod +x /usr/local/bin/kops \
   && kops completion bash >> ~/.bashrc
@@ -38,7 +38,7 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL
   && kubectl completion bash >> ~/.bashrc
 
 # install helm
-ARG HELM_VERSION=2.8.2
+ARG HELM_VERSION=2.9.1
 RUN curl -L https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
   | tar -zx -C /usr/local/bin --strip-components=1 linux-amd64/helm \
   && helm completion bash >> ~/.bashrc

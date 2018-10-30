@@ -67,6 +67,16 @@ RUN curl -L https://github.com/johanhaleby/kubetail/archive/1.6.1.tar.gz \
 RUN curl -sL https://dist.ipfs.io/go-ipfs/v0.4.17/go-ipfs_v0.4.17_linux-amd64.tar.gz \
   | tar -zx -C /usr/local/bin --strip-components=1 go-ipfs/ipfs
 
+# install OpenSSH v7.5
+RUN wget https://launchpadlibrarian.net/335526589/openssh-client_7.5p1-10_amd64.deb \
+  && wget https://launchpadlibrarian.net/298453050/libgssapi-krb5-2_1.14.3+dfsg-2ubuntu1_amd64.deb \
+  && wget https://launchpadlibrarian.net/298453058/libkrb5-3_1.14.3+dfsg-2ubuntu1_amd64.deb \
+  && wget https://launchpadlibrarian.net/298453060/libkrb5support0_1.14.3+dfsg-2ubuntu1_amd64.deb \
+  && dpkg -i libkrb5support0_1.14.3+dfsg-2ubuntu1_amd64.deb \
+  && dpkg -i libkrb5-3_1.14.3+dfsg-2ubuntu1_amd64.deb \
+  && dpkg -i libgssapi-krb5-2_1.14.3+dfsg-2ubuntu1_amd64.deb \
+  && dpkg -i openssh-client_7.5p1-10_amd64.deb
+
 # use bash-completion
 RUN echo '[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion' >> ~/.bashrc
 

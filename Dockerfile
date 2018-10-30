@@ -75,7 +75,11 @@ RUN curl -O https://launchpadlibrarian.net/335526589/openssh-client_7.5p1-10_amd
   && dpkg -i libkrb5support0_1.14.3+dfsg-2ubuntu1_amd64.deb \
   && dpkg -i libkrb5-3_1.14.3+dfsg-2ubuntu1_amd64.deb \
   && dpkg -i libgssapi-krb5-2_1.14.3+dfsg-2ubuntu1_amd64.deb \
-  && dpkg -i openssh-client_7.5p1-10_amd64.deb
+  && dpkg -i openssh-client_7.5p1-10_amd64.deb \
+  && rm libkrb5support0_1.14.3+dfsg-2ubuntu1_amd64.deb \
+    libkrb5-3_1.14.3+dfsg-2ubuntu1_amd64.deb \
+    libgssapi-krb5-2_1.14.3+dfsg-2ubuntu1_amd64.deb \
+    openssh-client_7.5p1-10_amd64.deb
 
 # use bash-completion
 RUN echo '[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion' >> ~/.bashrc

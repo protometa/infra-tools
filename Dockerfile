@@ -64,7 +64,8 @@ RUN curl -L https://github.com/johanhaleby/kubetail/archive/1.6.1.tar.gz \
   | tar -zx kubetail-1.6.1/completion/kubetail.bash -O >> ~/.bashrc
 
 # install ipfs
-RUN curl -sL https://dist.ipfs.io/go-ipfs/v0.4.17/go-ipfs_v0.4.17_linux-amd64.tar.gz \
+ARG IPFS_VERSION=0.4.18
+RUN curl -sL https://dist.ipfs.io/go-ipfs/v${IPFS_VERSION}/go-ipfs_v${IPFS_VERSION}_linux-amd64.tar.gz \
   | tar -zx -C /usr/local/bin --strip-components=1 go-ipfs/ipfs
 
 # use bash-completion

@@ -1,14 +1,16 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+    build-essential \
     curl \
     bash-completion \
-    python \
-    python-pip \
-    python-setuptools \
+    python3 \
+    python3-pip \
+    python3-dev \
+    python3-setuptools \
     git \
     jq \
     ssh \
@@ -21,7 +23,7 @@ RUN apt-get update \
 RUN curl -fsSL https://get.docker.com | sh
 
 # install docker-compose and awscli
-RUN pip --no-cache-dir install docker-compose awscli s3cmd pipenv \
+RUN pip3 --no-cache-dir install docker-compose awscli s3cmd pipenv \
   && curl -L https://raw.githubusercontent.com/docker/compose/1.22.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose \
   && echo "complete -C '/usr/local/bin/aws_completer' aws" >> ~/.bashrc
 
@@ -49,7 +51,7 @@ ENV PATH=$PATH:/root/.pulumi/bin
 
 # install Node.js
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash \
-  && apt-get install -yq nodejs build-essential \
+  && apt-get install -yq nodejs \
   && npm i -g npm \
   && npm completion >> ~/.bashrc
 

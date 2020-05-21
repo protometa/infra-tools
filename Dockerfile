@@ -46,7 +46,8 @@ RUN curl -L https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}
   && helm completion bash >> ~/.bashrc
 
 # install Pulumi
-RUN curl -fsSL https://get.pulumi.com | sh
+ARG PULUMI_VERSION=1.12.1
+RUN curl -fsSL https://get.pulumi.com | sh -s -- --version $PULUMI_VERSION
 ENV PATH=$PATH:/root/.pulumi/bin
 
 # install Node.js

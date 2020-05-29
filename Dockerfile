@@ -14,10 +14,17 @@ RUN apt-get update \
     git \
     jq \
     ssh \
+    locales \
   && apt-get clean \
   && apt-get autoclean \
   && apt-get autoremove \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# setup locales
+RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
 # install Docker
 RUN curl -fsSL https://get.docker.com | sh

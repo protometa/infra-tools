@@ -58,7 +58,7 @@ RUN curl -fsSL https://get.pulumi.com | sh -s -- --version $PULUMI_VERSION
 ENV PATH=$PATH:/root/.pulumi/bin
 
 # install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash \
   && apt-get install -yq nodejs \
   && npm i -g npm \
   && npm completion >> ~/.bashrc

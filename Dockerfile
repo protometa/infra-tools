@@ -53,7 +53,7 @@ RUN curl -L https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}
   && helm completion bash >> ~/.bashrc
 
 # install Pulumi
-ARG PULUMI_VERSION=2.3.0
+ARG PULUMI_VERSION=2.12.0
 RUN curl -fsSL https://get.pulumi.com | sh -s -- --version $PULUMI_VERSION
 ENV PATH=$PATH:/root/.pulumi/bin
 

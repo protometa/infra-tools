@@ -47,7 +47,7 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL
   && kubectl completion bash >> ~/.bashrc
 
 # install helm
-ARG HELM_VERSION=2.9.1
+ARG HELM_VERSION=3.1.1
 RUN curl -L https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
   | tar -zx -C /usr/local/bin --strip-components=1 linux-amd64/helm \
   && helm completion bash >> ~/.bashrc

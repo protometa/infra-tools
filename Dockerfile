@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 SHELL ["/bin/bash", "-c"]
 
@@ -53,7 +53,7 @@ RUN curl -L https://get.helm.sh/helm-v$HELM_VERSION-linux-amd64.tar.gz \
   && helm completion bash >> ~/.bashrc
 
 # install Pulumi
-ARG PULUMI_VERSION=2.12.0
+ARG PULUMI_VERSION=3.1.0
 RUN curl -fsSL https://get.pulumi.com | sh -s -- --version $PULUMI_VERSION
 ENV PATH=$PATH:/root/.pulumi/bin
 

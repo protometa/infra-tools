@@ -53,12 +53,12 @@ RUN curl -L https://get.helm.sh/helm-v$HELM_VERSION-linux-amd64.tar.gz \
   && helm completion bash >> ~/.bashrc
 
 # install Pulumi
-ARG PULUMI_VERSION=3.1.0
+ARG PULUMI_VERSION=3.25.0
 RUN curl -fsSL https://get.pulumi.com | sh -s -- --version $PULUMI_VERSION
 ENV PATH=$PATH:/root/.pulumi/bin
 
 # install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash \
   && apt-get install -yq nodejs \
   && npm i -g npm \
   && npm completion >> ~/.bashrc

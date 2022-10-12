@@ -73,6 +73,9 @@ RUN curl -L https://github.com/johanhaleby/kubetail/archive/1.6.1.tar.gz \
   && curl -L https://github.com/johanhaleby/kubetail/archive/1.6.1.tar.gz \
   | tar -zx kubetail-1.6.1/completion/kubetail.bash -O >> ~/.bashrc
 
+# install ansible-playbooks
+RUN pip3 --no-cache-dir install ansible
+
 # use bash-completion
 RUN echo '[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion' >> ~/.bashrc
 

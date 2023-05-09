@@ -41,7 +41,7 @@ RUN curl -L https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}
   && kops completion bash >> ~/.bashrc
 
 # install kubectl
-ARG KUBECTL_VERSION=1.13.1
+ARG KUBECTL_VERSION=1.23.5
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
   > /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl \
   && kubectl completion bash >> ~/.bashrc
@@ -53,7 +53,7 @@ RUN curl -L https://get.helm.sh/helm-v$HELM_VERSION-linux-amd64.tar.gz \
   && helm completion bash >> ~/.bashrc
 
 # install Pulumi
-ARG PULUMI_VERSION=3.25.0
+ARG PULUMI_VERSION=3.35.3
 RUN curl -fsSL https://get.pulumi.com | sh -s -- --version $PULUMI_VERSION
 ENV PATH=$PATH:/root/.pulumi/bin
 

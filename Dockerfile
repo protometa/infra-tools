@@ -71,4 +71,23 @@ RUN curl -sL https://dist.ipfs.io/go-ipfs/v${IPFS_VERSION}/go-ipfs_v${IPFS_VERSI
 # use bash-completion
 RUN echo '[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion' >> ~/.bashrc
 
+# install github runner
+## install new git for runner
+RUN apt update
+RUN apt install -y software-properties-common
+RUN add-apt-repository -y ppa:git-core/ppa
+RUN apt update
+RUN apt install -y git
+## add runner user
+RUN groupadd -g 121 runner && useradd -mr -d /home/runner -u 1000 -g 121 runner
+RUN cd /home/runner/
+USER runner
+## install/configure runner
+RUN curl -o actions-runner-linux-x64-2.304.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.304.0/actions-runner-linux-x64-2.304.0.tar.gz
+RUN tar xzf ./actions-runner-linux-x64-2.304.0.tar.gz
+RUN export RUNNER_ALLOW_RUNASROOT=1
+RUN ./bin/installdependencies.sh
+RUN ./config.sh --url https://github.com/${GH_ORG} --unattended --token ${RUNNER_TOKEN}
+COPY runner-entrypoint.sh /
+
 CMD ["bash", "-l"]
